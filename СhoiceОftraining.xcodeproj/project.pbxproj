@@ -26,7 +26,6 @@
 		50EE21FB2995F734004E30B4 /* StudyCollectionViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EE21FA2995F734004E30B4 /* StudyCollectionViewCell.swift */; };
 		50EE21FE2995F7C6004E30B4 /* ColletionModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EE21FD2995F7C6004E30B4 /* ColletionModel.swift */; };
 		50EE22002995FF46004E30B4 /* SF-Pro-Display-Medium.ttf in Resources */ = {isa = PBXBuildFile; fileRef = 50EE21FF2995FF29004E30B4 /* SF-Pro-Display-Medium.ttf */; };
-		50EE2202299608B2004E30B4 /* ColletionDownModel.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EE2201299608B2004E30B4 /* ColletionDownModel.swift */; };
 		50EE2204299608F1004E30B4 /* StudyCollectionDownViewCell.swift in Sources */ = {isa = PBXBuildFile; fileRef = 50EE2203299608F1004E30B4 /* StudyCollectionDownViewCell.swift */; };
 /* End PBXBuildFile section */
 
@@ -52,7 +51,6 @@
 		50EE21FA2995F734004E30B4 /* StudyCollectionViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCollectionViewCell.swift; sourceTree = "<group>"; };
 		50EE21FD2995F7C6004E30B4 /* ColletionModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColletionModel.swift; sourceTree = "<group>"; };
 		50EE21FF2995FF29004E30B4 /* SF-Pro-Display-Medium.ttf */ = {isa = PBXFileReference; lastKnownFileType = file; path = "SF-Pro-Display-Medium.ttf"; sourceTree = "<group>"; };
-		50EE2201299608B2004E30B4 /* ColletionDownModel.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = ColletionDownModel.swift; sourceTree = "<group>"; };
 		50EE2203299608F1004E30B4 /* StudyCollectionDownViewCell.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = StudyCollectionDownViewCell.swift; sourceTree = "<group>"; };
 /* End PBXFileReference section */
 
@@ -235,7 +233,6 @@
 			isa = PBXGroup;
 			children = (
 				50EE21FD2995F7C6004E30B4 /* ColletionModel.swift */,
-				50EE2201299608B2004E30B4 /* ColletionDownModel.swift */,
 			);
 			path = Model;
 			sourceTree = "<group>";
@@ -360,7 +357,6 @@
 			buildActionMask = 2147483647;
 			files = (
 				508DD4DC29927633008F1B44 /* MainController.swift in Sources */,
-				50EE2202299608B2004E30B4 /* ColletionDownModel.swift in Sources */,
 				50EE21F12995E528004E30B4 /* MainView.swift in Sources */,
 				508DD4D829927633008F1B44 /* AppDelegate.swift in Sources */,
 				508DD4DA29927633008F1B44 /* SceneDelegate.swift in Sources */,

@@ -29,6 +29,7 @@ final class StudyView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+        collectionView.allowsMultipleSelection = true
         collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
@@ -50,6 +51,7 @@ final class StudyView: UIView {
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
         collectionView.allowsMultipleSelection = true
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     

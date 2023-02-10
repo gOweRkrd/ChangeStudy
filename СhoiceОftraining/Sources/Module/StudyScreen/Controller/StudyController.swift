@@ -19,6 +19,7 @@ final class StudyController: UIViewController {
         setupDelegate()
         
     }
+    
     // MARK: - Private Methods
     
     private func addTarget() {
@@ -32,6 +33,10 @@ final class StudyController: UIViewController {
         studyView.collectionViewDown.dataSource = self
     }
     
+    private func arrayIndexForRow(_ row: Int) -> Int {
+        
+        return row % itemsModel.count
+    }
     // MARK: - Actions
     
     @objc
@@ -43,10 +48,6 @@ final class StudyController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
-    
-    func arrayIndexForRow(_ row: Int) -> Int {
-        return row % itemsModel.count
-    }
 }
 
 // MARK: - CollectionViewDataSource
@@ -55,24 +56,14 @@ extension StudyController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        switch collectionView {
-                
-        case studyView.collectionView:
-                return itemsModel.count * 10
-                
-        case studyView.collectionViewDown:
-                return itemsDownModel.count
-                
-        default:
-                return 0
-        }
+        return itemsModel.count * 10
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         let arrayIndex = arrayIndexForRow(indexPath.row)
-        var localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
         let modelObject = itemsModel[arrayIndex]
+        var localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
         
         switch collectionView {
                 
