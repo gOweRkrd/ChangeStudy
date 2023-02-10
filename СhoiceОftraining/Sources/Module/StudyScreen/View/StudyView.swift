@@ -114,34 +114,50 @@ private extension StudyView {
         
         NSLayoutConstraint.activate([
             
-            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: 24),
-            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
+            titleLabel.topAnchor.constraint(equalTo: self.topAnchor, constant: .titleLabelTopAnchor),
+            titleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
             
-            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: 12),
-            subTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            subTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            subTitleLabel.topAnchor.constraint(equalTo: titleLabel.bottomAnchor, constant: .TopAnchor),
+            subTitleLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
+            subTitleLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.leadingTrailingAnchor),
             
-            collectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 12),
+            collectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: .TopAnchor),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
+            collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: .collectionViewHeight),
             
-            infoLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 24),
-            infoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            infoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
+            infoLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: .infoLabelTopAnchor),
+            infoLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
+            infoLabel.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.leadingTrailingAnchor),
             
-            collectionViewDown.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 12),
-            collectionViewDown.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.140),
+            collectionViewDown.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .TopAnchor),
+            collectionViewDown.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
+            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.leadingTrailingAnchor),
+            collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: .collectionViewDownHeight),
             
-            questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            questionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -78),
+            questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
+            questionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -.questionLabelBottomAnchor),
             
-            applicationButton.leadingAnchor.constraint(equalTo: questionLabel.leadingAnchor, constant: 116),
-            applicationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            applicationButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -58),
-            applicationButton.heightAnchor.constraint(equalToConstant: 60)
+            applicationButton.leadingAnchor.constraint(equalTo: questionLabel.leadingAnchor, constant: .applicationButtonLeadingAnchor),
+            applicationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.leadingTrailingAnchor),
+            applicationButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -.applicationButtonBottomAnchor),
+            applicationButton.heightAnchor.constraint(equalToConstant: .applicationButtonHeightAnchor)
         ])
     }
+}
+
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    
+    static let titleLabelTopAnchor: CGFloat = 24
+    static let leadingTrailingAnchor: CGFloat = 20
+    static let TopAnchor: CGFloat = 12
+    static let collectionViewHeight: CGFloat = 0.1
+    static let infoLabelTopAnchor: CGFloat = 24
+    static let collectionViewDownHeight: CGFloat = 0.140
+    static let questionLabelBottomAnchor: CGFloat = 78
+    static let applicationButtonLeadingAnchor: CGFloat = 116
+    static let applicationButtonBottomAnchor: CGFloat = 58
+    static let applicationButtonHeightAnchor: CGFloat = 60
 }

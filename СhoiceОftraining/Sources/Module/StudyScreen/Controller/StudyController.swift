@@ -105,7 +105,7 @@ extension StudyController: UICollectionViewDataSource {
 extension StudyController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-        
+       
         switch collectionView {
                 
         case studyView.collectionView:

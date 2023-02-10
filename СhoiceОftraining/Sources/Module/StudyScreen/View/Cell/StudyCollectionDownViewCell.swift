@@ -68,8 +68,15 @@ private extension StudyCollectionDownViewCell {
         
         NSLayoutConstraint.activate([
             
-            profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .profileDevLabelTopAnchor),
             profileDevLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
         ])
     }
+}
+
+// MARK: - Constant Constraints
+
+private extension CGFloat {
+    
+    static let profileDevLabelTopAnchor: CGFloat = 12
 }
