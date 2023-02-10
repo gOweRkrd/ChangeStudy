@@ -28,7 +28,7 @@ final class MainController: UIViewController {
     
     @objc
     private func changeScreen() {
-       
+        let studyVC = StudyController()
+        present(studyVC, animated: true)
         }
     }
-

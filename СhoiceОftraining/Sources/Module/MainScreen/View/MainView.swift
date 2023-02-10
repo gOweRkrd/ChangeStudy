@@ -48,12 +48,3 @@ final class MainView: UIView {
             ])
         }
     }
-
-    // MARK: - Constant Constraints
-
-    private extension CGFloat {
-        
-        static let mainTitleLabelTopAnchor: CGFloat = 60
-        static let AnchorSizeView: CGFloat = 16
-    
-    }

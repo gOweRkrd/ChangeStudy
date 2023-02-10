@@ -9,6 +9,7 @@
 		<string>SF-Pro-Display-Black</string>
 		<string>SF-Pro-Display-Heavy</string>
 		<string>SF-Pro-Display-Semibold</string>
+		<string>SF-Pro-Display-Medium</string>
 	</array>
 	<key>UIApplicationSceneManifest</key>
 	<dict>

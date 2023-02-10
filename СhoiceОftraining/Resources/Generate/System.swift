@@ -24,9 +24,10 @@ internal enum Fonts {
     internal static let black = FontConvertible(name: "SFProDisplay-Black", family: "SF Pro Display", path: "SF-Pro-Display-Black.ttf")
     internal static let bold = FontConvertible(name: "SFProDisplay-Bold", family: "SF Pro Display", path: "SFProDisplay-Bold.ttf")
     internal static let heavy = FontConvertible(name: "SFProDisplay-Heavy", family: "SF Pro Display", path: "SF-Pro-Display-Heavy.ttf")
+    internal static let medium = FontConvertible(name: "SFProDisplay-Medium", family: "SF Pro Display", path: "SF-Pro-Display-Medium.ttf")
     internal static let regular = FontConvertible(name: "SFProDisplay-Regular", family: "SF Pro Display", path: "SFProDisplayRegular.ttf")
     internal static let semibold = FontConvertible(name: "SFProDisplay-Semibold", family: "SF Pro Display", path: "SF-Pro-Display-Semibold.ttf")
-    internal static let all: [FontConvertible] = [black, bold, heavy, regular, semibold]
+    internal static let all: [FontConvertible] = [black, bold, heavy, medium, regular, semibold]
   }
   internal static let allCustomFonts: [FontConvertible] = [SFProDisplay.all].flatMap { $0 }
   internal static func registerAllCustomFonts() {
