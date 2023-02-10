@@ -105,49 +105,55 @@ extension StudyController: UICollectionViewDataSource {
 extension StudyController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-       
+  
         switch collectionView {
                 
         case studyView.collectionView:
                 
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
                     cell.selected(isSelected: true)
+                    self.animateView(cell.contentView)
                 }
                 
         case studyView.collectionViewDown:
                 
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected(isSelected: true)
+                    self.animateView(cell.contentView)
                 }
         default:
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected(isSelected: true)
+                    self.animateView(cell.contentView)
                 }
         }
     }
     
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
-        
         switch collectionView {
                 
         case studyView.collectionView:
                 
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
                     cell.selected()
+                    self.animateView(cell.contentView)
                 }
                 
         case studyView.collectionViewDown:
                 
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected()
+                    self.animateView(cell.contentView)
                 }
         default:
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected()
+                    self.animateView(cell.contentView)
                 }
         }
     }
 }
+
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension StudyController: UICollectionViewDelegateFlowLayout {
