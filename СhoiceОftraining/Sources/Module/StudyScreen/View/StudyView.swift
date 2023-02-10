@@ -128,7 +128,7 @@ private extension StudyView {
             
             collectionViewDown.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 12),
             collectionViewDown.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
-            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: 20),
+            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15),
             
             questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),

@@ -4,13 +4,13 @@ final class MainView: UIView {
     
         // MARK: - UI Elements
         
-        lazy var mainButton: UIButton = {
+        lazy var mainImage: UIImageView = {
             
-            let button = UIButton()
-            button.setImage(UIImage(named: "image"), for: .normal)
-            return button
+            let imageView = UIImageView()
+            imageView.image = UIImage(named: "image")
+            return imageView
         }()
-        
+    
         // MARK: - Lifecycle
         
         override init(frame: CGRect) {
@@ -33,17 +33,17 @@ final class MainView: UIView {
     private extension MainView {
         
         func addSubView() {
-            self.addSubviews([mainButton])
+            self.addSubviews([mainImage])
         }
         
         func setupConstraints() {
             
             NSLayoutConstraint.activate([
                 
-                mainButton.topAnchor.constraint(equalTo: self.topAnchor),
-                mainButton.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-                mainButton.leadingAnchor.constraint(equalTo: self.leadingAnchor),
-                mainButton.bottomAnchor.constraint(equalTo: self.bottomAnchor)
+                mainImage.topAnchor.constraint(equalTo: self.topAnchor),
+                mainImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
+                mainImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+                mainImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
                 
             ])
         }

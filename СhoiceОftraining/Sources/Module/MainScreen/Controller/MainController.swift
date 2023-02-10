@@ -15,8 +15,16 @@ final class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        
         let studyVC = StudyController()
+        if let sheet = studyVC.sheetPresentationController {
+            sheet.detents = [.medium(), .large()]
+            sheet.prefersScrollingExpandsWhenScrolledToEdge = false
+            sheet.prefersGrabberVisible = true
+            sheet.largestUndimmedDetentIdentifier = .medium
+            sheet.preferredCornerRadius = 20
+            sheet.prefersEdgeAttachedInCompactHeight = true
+        }
         present(studyVC, animated: true)
     }
-    
 }
