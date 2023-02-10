@@ -17,7 +17,7 @@ final class StudyController: UIViewController {
         super.viewDidLoad()
         addTarget()
         setupDelegate()
-
+        
     }
     // MARK: - Private Methods
     
@@ -43,6 +43,10 @@ final class StudyController: UIViewController {
         }))
         self.present(alert, animated: true, completion: nil)
     }
+    
+    func arrayIndexForRow(_ row: Int) -> Int {
+        return row % itemsModel.count
+    }
 }
 
 // MARK: - CollectionViewDataSource
@@ -54,7 +58,7 @@ extension StudyController: UICollectionViewDataSource {
         switch collectionView {
                 
         case studyView.collectionView:
-                return itemsModel.count
+                return itemsModel.count * 10
                 
         case studyView.collectionViewDown:
                 return itemsDownModel.count
@@ -66,22 +70,26 @@ extension StudyController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
+        let arrayIndex = arrayIndexForRow(indexPath.row)
+        var localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
+        let modelObject = itemsModel[arrayIndex]
+        
         switch collectionView {
                 
         case studyView.collectionView:
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! StudyCollectionViewCell
-                cell.data = itemsModel[indexPath.item]
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: localIndexPath) as! StudyCollectionViewCell
+                cell.data = modelObject
                 return cell
                 
         case studyView.collectionViewDown:
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as! StudyCollectionDownViewCell
-                cell.data = itemsModel[indexPath.item]
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
+                cell.data = modelObject
                 return cell
         default:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as! StudyCollectionDownViewCell
-                cell.data = itemsModel[indexPath.item]
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
+                cell.data = modelObject
                 return cell
         }
         
@@ -140,15 +148,15 @@ extension StudyController: UICollectionViewDelegate {
 
 extension StudyController: UICollectionViewDelegateFlowLayout {
     
-            func collectionView(_ collectionView: UICollectionView,
-                                layout collectionViewLayout: UICollectionViewLayout,
-                                sizeForItemAt indexPath: IndexPath) -> CGSize {
-                let label = UILabel(frame: CGRect.zero)
-                label.text = itemsModel[indexPath.item].profileDevLabel
-                label.sizeToFit()
-                
-                return CGSize(width: label.frame.width + 30,
-                              height: collectionView.frame.width / 9)
-            }
-        }
-    
+    func collectionView(_ collectionView: UICollectionView,
+                        layout collectionViewLayout: UICollectionViewLayout,
+                        sizeForItemAt indexPath: IndexPath) -> CGSize {
+        
+        let label = UILabel(frame: CGRect.zero)
+        label.text = itemsModel[arrayIndexForRow(indexPath.row)].profileDevLabel
+        label.sizeToFit()
+        
+        return CGSize(width: label.frame.width + 30,
+                      height: collectionView.frame.width / 9)
+    }
+}

@@ -35,18 +35,35 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func selected(isSelected: Bool = false) {
-            
-            if isSelected {
-                contentView.backgroundColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
-                profileDevLabel.textColor = UIColor.white
-            } else {
-                contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
-                profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
-            }
+
+        if isSelected {
+            contentView.backgroundColor = UIColor(red: 37 / 255, green: 217 / 255, blue: 119 / 255, alpha: 1)
+            profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+//            animateView(_viewToAnimate: UIView)
+        } else {
+            contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
+            profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+//            animateView()
         }
+    }
     
     // MARK: - Private Methods
     
+    private func animateView (_ viewToAnimate: UIView) {
+        
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            
+        }) { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4,
+                           initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        }
+    }
+//        }
     private func castomizeCell () {
         
         contentView.layer.borderColor = UIColor.gray.cgColor
@@ -65,12 +82,11 @@ private extension StudyCollectionDownViewCell {
     }
     
     func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
             
-            NSLayoutConstraint.activate([
-                
-                profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
-                profileDevLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
-            
-            ])
-        }
+            profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: 12),
+            profileDevLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+        ])
+    }
 }

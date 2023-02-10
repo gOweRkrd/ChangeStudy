@@ -29,6 +29,7 @@ final class StudyView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+        collectionView.showsHorizontalScrollIndicator = false
         return collectionView
     }()
     
@@ -48,6 +49,7 @@ final class StudyView: UIView {
         layout.scrollDirection = .horizontal
         let collectionView = UICollectionView(frame: .zero, collectionViewLayout: layout)
         collectionView.backgroundColor = .white
+        collectionView.allowsMultipleSelection = true
         return collectionView
     }()
     
@@ -93,7 +95,7 @@ final class StudyView: UIView {
     
     private func setupSpacingCollectionView() {
         let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
         collectionViewDown.collectionViewLayout = layout
     }
 }
@@ -129,7 +131,7 @@ private extension StudyView {
             collectionViewDown.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: 12),
             collectionViewDown.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
-            collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.15),
+            collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.12),
             
             questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             questionLabel.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -78),
