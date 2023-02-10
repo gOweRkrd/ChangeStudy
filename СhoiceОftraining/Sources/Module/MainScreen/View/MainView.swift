@@ -44,7 +44,6 @@ final class MainView: UIView {
                 mainImage.trailingAnchor.constraint(equalTo: self.trailingAnchor),
                 mainImage.leadingAnchor.constraint(equalTo: self.leadingAnchor),
                 mainImage.bottomAnchor.constraint(equalTo: self.bottomAnchor)
-                
             ])
         }
     }

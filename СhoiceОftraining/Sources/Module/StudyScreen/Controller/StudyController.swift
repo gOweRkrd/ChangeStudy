@@ -17,7 +17,6 @@ final class StudyController: UIViewController {
         super.viewDidLoad()
         addTarget()
         setupDelegate()
-        
     }
     
     // MARK: - Private Methods
@@ -37,6 +36,7 @@ final class StudyController: UIViewController {
         
         return row % itemsModel.count
     }
+    
     // MARK: - Actions
     
     @objc
@@ -63,7 +63,7 @@ extension StudyController: UICollectionViewDataSource {
         
         let arrayIndex = arrayIndexForRow(indexPath.row)
         let modelObject = itemsModel[arrayIndex]
-        var localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
+        let localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
         
         switch collectionView {
                 
@@ -83,7 +83,6 @@ extension StudyController: UICollectionViewDataSource {
                 cell.data = modelObject
                 return cell
         }
-        
     }
 }
 

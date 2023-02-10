@@ -15,6 +15,12 @@ final class MainController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
+        changeSheetPresentationController()
+    }
+    
+    // MARK: - Private Methods
+    
+    private func changeSheetPresentationController() {
         
         let studyVC = StudyController()
         if let sheet = studyVC.sheetPresentationController {
