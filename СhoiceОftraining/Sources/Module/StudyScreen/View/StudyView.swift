@@ -142,7 +142,6 @@ private extension StudyView {
             applicationButton.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -20),
             applicationButton.bottomAnchor.constraint(equalTo: self.bottomAnchor, constant: -58),
             applicationButton.heightAnchor.constraint(equalToConstant: 60)
-            
         ])
     }
 }

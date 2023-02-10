@@ -1,7 +1,7 @@
 import UIKit
 
 final class StudyCollectionDownViewCell: UICollectionViewCell {
-    
+        
     var data: CollectionModel? {
         didSet {
             guard let data = data else { return }
@@ -35,7 +35,7 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     // MARK: - Public Methods
     
     func selected(isSelected: Bool = false) {
-
+        
         if isSelected {
             contentView.backgroundColor = UIColor(red: 37 / 255, green: 217 / 255, blue: 119 / 255, alpha: 1)
             profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
@@ -47,21 +47,6 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     
     // MARK: - Private Methods
     
-//    private func animateView (_ viewToAnimate: UIView) {
-//
-//        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2,
-//                       initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
-//
-//            viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
-//
-//        }) { _ in
-//            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4,
-//                           initialSpringVelocity: 2, options: .curveEaseIn, animations: {
-//                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
-//            }, completion: nil)
-//        }
-//    }
-//        }
     private func castomizeCell () {
         
         contentView.layer.borderColor = UIColor.gray.cgColor

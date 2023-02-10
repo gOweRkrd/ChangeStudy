@@ -33,15 +33,29 @@ final class StudyController: UIViewController {
     }
     
     private func arrayIndexForRow(_ row: Int) -> Int {
-        
         return row % itemsModel.count
+    }
+    
+    private func animateView (_ viewToAnimate: UIView) {
+        
+        UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.2,
+                       initialSpringVelocity: 0.5, options: .curveEaseIn, animations: {
+            
+            viewToAnimate.transform = CGAffineTransform(scaleX: 0.92, y: 0.92)
+            
+        }) { _ in
+            UIView.animate(withDuration: 0.15, delay: 0, usingSpringWithDamping: 0.4,
+                           initialSpringVelocity: 2, options: .curveEaseIn, animations: {
+                viewToAnimate.transform = CGAffineTransform(scaleX: 1, y: 1)
+            }, completion: nil)
+        }
     }
     
     // MARK: - Actions
     
     @objc
-    private func applicationButTup() {
-        
+    private func applicationButTup(sender: UIButton) {
+        self.animateView(sender)
         let alert = UIAlertController(title: "Поздравляем!", message: "Вашая заявка успешна отправлена!", preferredStyle: .alert)
         alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: { _ in
             
