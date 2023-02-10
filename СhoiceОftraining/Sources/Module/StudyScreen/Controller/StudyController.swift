@@ -17,6 +17,7 @@ final class StudyController: UIViewController {
         super.viewDidLoad()
         addTarget()
         setupDelegate()
+
     }
     // MARK: - Private Methods
     
@@ -139,8 +140,15 @@ extension StudyController: UICollectionViewDelegate {
 
 extension StudyController: UICollectionViewDelegateFlowLayout {
     
-    func collectionView(_ collectionView: UICollectionView, layout collectionViewLayout: UICollectionViewLayout, sizeForItemAt indexPath: IndexPath) -> CGSize {
-        
-        return CGSize(width: collectionView.frame.width / 5, height: collectionView.frame.width / 9)
-    }
-}
+            func collectionView(_ collectionView: UICollectionView,
+                                layout collectionViewLayout: UICollectionViewLayout,
+                                sizeForItemAt indexPath: IndexPath) -> CGSize {
+                let label = UILabel(frame: CGRect.zero)
+                label.text = itemsModel[indexPath.item].profileDevLabel
+                label.sizeToFit()
+                
+                return CGSize(width: label.frame.width + 30,
+                              height: collectionView.frame.width / 9)
+            }
+        }
+    

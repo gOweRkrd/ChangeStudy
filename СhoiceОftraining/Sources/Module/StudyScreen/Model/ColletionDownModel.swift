@@ -11,6 +11,5 @@ let itemsDownModel: [CollectionDownModel] = [
     CollectionDownModel(profileDevLabel: "Flutter"),
     CollectionDownModel(profileDevLabel: "QA"),
     CollectionDownModel(profileDevLabel: "PM"),
-    CollectionDownModel(profileDevLabel: "C++"),
-    CollectionDownModel(profileDevLabel: "Frontend")
+    CollectionDownModel(profileDevLabel: "C++")
 ]

@@ -94,7 +94,6 @@ final class StudyView: UIView {
     private func setupSpacingCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-//        layout.minimumLineSpacing = spacing
         collectionViewDown.collectionViewLayout = layout
     }
 }
@@ -120,7 +119,7 @@ private extension StudyView {
             
             collectionView.topAnchor.constraint(equalTo: subTitleLabel.bottomAnchor, constant: 12),
             collectionView.trailingAnchor.constraint(equalTo: self.trailingAnchor),
-            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor),
+            collectionView.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: 20),
             collectionView.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: 0.1),
             
             infoLabel.topAnchor.constraint(equalTo: collectionView.bottomAnchor, constant: 24),
