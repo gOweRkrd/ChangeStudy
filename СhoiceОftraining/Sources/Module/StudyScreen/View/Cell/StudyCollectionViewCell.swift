@@ -33,6 +33,19 @@ final class StudyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    // MARK: - Public Methods
+    
+    func selected(isSelected: Bool = false) {
+            
+            if isSelected {
+                contentView.backgroundColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+                profileDevLabel.textColor = UIColor.white
+            } else {
+                contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
+                profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+            }
+        }
+    
     // MARK: - Private Methods
     
     private func castomizeCell () {
@@ -40,7 +53,7 @@ final class StudyCollectionViewCell: UICollectionViewCell {
         contentView.layer.borderColor = UIColor.gray.cgColor
         contentView.layer.cornerRadius = 10
         contentView.clipsToBounds = true
-        contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
+        contentView.backgroundColor = UIColor(red: 243 / 255, green: 243 / 255, blue: 245 / 255, alpha: 1)
     }
 }
 

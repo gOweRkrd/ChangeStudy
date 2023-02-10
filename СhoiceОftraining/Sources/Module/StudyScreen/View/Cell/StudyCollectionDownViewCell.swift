@@ -32,6 +32,18 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    // MARK: - Public Methods
+    
+    func selected(isSelected: Bool = false) {
+            
+            if isSelected {
+                contentView.backgroundColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+                profileDevLabel.textColor = UIColor.white
+            } else {
+                contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
+                profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+            }
+        }
     
     // MARK: - Private Methods
     

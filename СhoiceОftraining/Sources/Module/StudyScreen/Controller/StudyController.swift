@@ -15,8 +15,13 @@ final class StudyController: UIViewController {
     
     override func viewDidLoad() {
         super.viewDidLoad()
-        //        addTarget()
+        addTarget()
         setupDelegate()
+    }
+    // MARK: - Private Methods
+    
+    private func addTarget() {
+        studyView.applicationButton.addTarget(self, action: #selector(applicationButTup), for: .touchUpInside)
     }
     
     private func setupDelegate() {
@@ -24,6 +29,18 @@ final class StudyController: UIViewController {
         studyView.collectionView.dataSource = self
         studyView.collectionViewDown.delegate = self
         studyView.collectionViewDown.dataSource = self
+    }
+    
+    // MARK: - Actions
+    
+    @objc
+    private func applicationButTup() {
+        
+        let alert = UIAlertController(title: "Поздравляем!", message: "Вашая заявка успешна отправлена!", preferredStyle: .alert)
+        alert.addAction(UIAlertAction(title: "Закрыть", style: .default, handler: { _ in
+            
+        }))
+        self.present(alert, animated: true, completion: nil)
     }
 }
 
@@ -34,13 +51,13 @@ extension StudyController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
         switch collectionView {
-
+                
         case studyView.collectionView:
                 return itemsModel.count
-
+                
         case studyView.collectionViewDown:
                 return itemsDownModel.count
-
+                
         default:
                 return 0
         }
@@ -49,25 +66,24 @@ extension StudyController: UICollectionViewDataSource {
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
         
         switch collectionView {
-
+                
         case studyView.collectionView:
-
+                
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as! StudyCollectionViewCell
                 cell.data = itemsModel[indexPath.item]
                 return cell
-
+                
         case studyView.collectionViewDown:
-
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as! StudyCollectionDownViewCell
-                cell.data = itemsModel[indexPath.item]
-                return cell
-        default:
                 
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as! StudyCollectionDownViewCell
                 cell.data = itemsModel[indexPath.item]
                 return cell
+        default:
+                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as! StudyCollectionDownViewCell
+                cell.data = itemsModel[indexPath.item]
+                return cell
         }
-      
+        
     }
 }
 
@@ -76,12 +92,49 @@ extension StudyController: UICollectionViewDataSource {
 extension StudyController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-
+        
+        switch collectionView {
+                
+        case studyView.collectionView:
+                
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
+                    cell.selected(isSelected: true)
+                }
+                
+        case studyView.collectionViewDown:
+                
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
+                    cell.selected(isSelected: true)
+                }
+        default:
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
+                    cell.selected(isSelected: true)
+                }
         }
     }
+    
     func collectionView(_ collectionView: UICollectionView, didDeselectItemAt indexPath: IndexPath) {
+        
+        switch collectionView {
+                
+        case studyView.collectionView:
+                
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
+                    cell.selected()
+                }
+                
+        case studyView.collectionViewDown:
+                
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
+                    cell.selected()
+                }
+        default:
+                if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
+                    cell.selected()
+                }
+        }
+    }
 }
-
 // MARK: - CollectionViewDelegateFlowLayout
 
 extension StudyController: UICollectionViewDelegateFlowLayout {

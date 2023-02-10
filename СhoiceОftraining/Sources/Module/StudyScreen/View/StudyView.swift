@@ -1,9 +1,7 @@
 import UIKit
 
 final class StudyView: UIView {
-    
-    private let spacing: CGFloat = 16.0
-    
+        
     // MARK: - UI Elements
     
     lazy var titleLabel: UILabel = {
@@ -96,7 +94,7 @@ final class StudyView: UIView {
     private func setupSpacingCollectionView() {
         let layout = UICollectionViewFlowLayout()
         layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
-        layout.minimumLineSpacing = spacing
+//        layout.minimumLineSpacing = spacing
         collectionViewDown.collectionViewLayout = layout
     }
 }
