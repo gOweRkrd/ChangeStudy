@@ -1,0 +1,17 @@
+fonts:
+  inputs:
+    - СhoiceОftraining/Resources/System
+  outputs:
+    templateName: swift5
+    output: СhoiceОftraining/Resources/Generate/System.swift
+    params:
+         enumName: Fonts
+xcassets:
+  inputs:
+    - СhoiceОftraining/Resources/Assets.xcassets
+  outputs:
+    - templateName: swift5
+      params:
+         enumName: Assets
+         forceProvidesNamespaces: true
+      output: СhoiceОftraining/Resources/Generate/Assets.swift
