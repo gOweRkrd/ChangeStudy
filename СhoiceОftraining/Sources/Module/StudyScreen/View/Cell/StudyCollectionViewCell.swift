@@ -1,17 +1,10 @@
 import UIKit
 
 final class StudyCollectionViewCell: UICollectionViewCell {
-    
-    var data: CollectionModel? {
-        didSet {
-            guard let data = data else { return }
-            profileDevLabel.text = data.profileDevLabel
-        }
-    }
-    
+
     // MARK: - UI Elements
     
-    private var profileDevLabel: UILabel = {
+     var profileDevLabel: UILabel = {
         
         let label = UILabel()
         label.font = Fonts.SFProDisplay.semibold.font(size: 14)
@@ -35,16 +28,20 @@ final class StudyCollectionViewCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     
+    func configure(with viewModel: CollectionModel) {
+        profileDevLabel.text = viewModel.profileDevLabel
+    }
+    
     func selected(isSelected: Bool = false) {
-            
-            if isSelected {
-                contentView.backgroundColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
-                profileDevLabel.textColor = UIColor.white
-            } else {
-                contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
-                profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
-            }
+        
+        if isSelected {
+            contentView.backgroundColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
+            profileDevLabel.textColor = UIColor.white
+        } else {
+            contentView.backgroundColor = UIColor(red: 236 / 255, green: 240 / 255, blue: 243 / 255, alpha: 1)
+            profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
         }
+    }
     
     // MARK: - Private Methods
     
@@ -66,14 +63,14 @@ private extension StudyCollectionViewCell {
     }
     
     func setupConstraints() {
+        
+        NSLayoutConstraint.activate([
             
-            NSLayoutConstraint.activate([
-                
-                profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .profileDevLabelTopAnchor),
-                profileDevLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
+            profileDevLabel.topAnchor.constraint(equalTo: contentView.topAnchor, constant: .profileDevLabelTopAnchor),
+            profileDevLabel.centerXAnchor.constraint(equalTo: contentView.centerXAnchor)
             
-            ])
-        }
+        ])
+    }
 }
 
 // MARK: - Constant Constraints

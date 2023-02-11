@@ -2,13 +2,6 @@ import UIKit
 
 final class StudyCollectionDownViewCell: UICollectionViewCell {
         
-    var data: CollectionModel? {
-        didSet {
-            guard let data = data else { return }
-            profileDevLabel.text = data.profileDevLabel
-        }
-    }
-    
     // MARK: - UI Elements
     
     private var profileDevLabel: UILabel = {
@@ -32,7 +25,12 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     required init?(coder: NSCoder) {
         fatalError("init(coder:) has not been implemented")
     }
+    
     // MARK: - Public Methods
+    
+    func configureCell(with viewModel: CollectionModel) {
+        profileDevLabel.text = viewModel.profileDevLabel
+    }
     
     func selected(isSelected: Bool = false) {
         
