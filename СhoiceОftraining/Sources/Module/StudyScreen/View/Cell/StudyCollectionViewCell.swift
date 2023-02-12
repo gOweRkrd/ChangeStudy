@@ -26,11 +26,6 @@ final class StudyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
-    override func prepareForReuse() {
-        super.prepareForReuse()
-        self.profileDevLabel.text = nil
-    }
-    
     // MARK: - Public Methods
     
     func configure(model: CollectionModel) {
