@@ -1,7 +1,7 @@
 import UIKit
 
 final class StudyCollectionDownViewCell: UICollectionViewCell {
-        
+    
     // MARK: - UI Elements
     
     private var profileDevLabel: UILabel = {
@@ -30,9 +30,16 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     
     func configureCell(model: CollectionModel) {
         self.profileDevLabel.text = model.profileDevLabel
+        if model.isSelectedCell {
+            selected(isSelected: true)
+        } else {
+            selected(isSelected: false)
+        }
     }
     
-    func selected(isSelected: Bool = false) {
+    // MARK: - Private Methods
+    
+    private func selected(isSelected: Bool = false) {
         
         if isSelected {
             contentView.backgroundColor = UIColor(red: 37 / 255, green: 217 / 255, blue: 119 / 255, alpha: 1)
@@ -42,8 +49,6 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
             profileDevLabel.textColor = UIColor(red: 49 / 255, green: 49 / 255, blue: 49 / 255, alpha: 1)
         }
     }
-    
-    // MARK: - Private Methods
     
     private func castomizeCell () {
         

@@ -3,6 +3,32 @@ import UIKit
 final class StudyController: UIViewController {
     
     // MARK: - Properties
+
+    var itemsModel: [CollectionModel] = [
+        CollectionModel(profileDevLabel: "iOS"),
+        CollectionModel(profileDevLabel: "Android"),
+        CollectionModel(profileDevLabel: "Design"),
+        CollectionModel(profileDevLabel: "Flutter"),
+        CollectionModel(profileDevLabel: "QA"),
+        CollectionModel(profileDevLabel: "PM"),
+        CollectionModel(profileDevLabel: "C++"),
+        CollectionModel(profileDevLabel: "Frontend"),
+        CollectionModel(profileDevLabel: "DVH"),
+        CollectionModel(profileDevLabel: "Analysts")
+    ]
+    
+    var itemsModelDown: [CollectionModel] = [
+        CollectionModel(profileDevLabel: "iOS"),
+        CollectionModel(profileDevLabel: "Android"),
+        CollectionModel(profileDevLabel: "Design"),
+        CollectionModel(profileDevLabel: "Flutter"),
+        CollectionModel(profileDevLabel: "QA"),
+        CollectionModel(profileDevLabel: "PM"),
+        CollectionModel(profileDevLabel: "C++"),
+        CollectionModel(profileDevLabel: "Frontend"),
+        CollectionModel(profileDevLabel: "DVH"),
+        CollectionModel(profileDevLabel: "Analysts")
+    ]
     
     private let studyView = StudyView()
     
@@ -33,7 +59,13 @@ final class StudyController: UIViewController {
     }
     
     private func arrayIndexForRow(_ row: Int) -> Int {
+        
         return row % itemsModel.count
+    }
+    
+    private func arrayIndexForRowDown(_ row: Int) -> Int {
+        
+        return row % itemsModelDown.count
     }
     
     private func animateView (_ viewToAnimate: UIView) {
@@ -70,20 +102,30 @@ extension StudyController: UICollectionViewDataSource {
     
     func collectionView(_ collectionView: UICollectionView, numberOfItemsInSection section: Int) -> Int {
         
-        return itemsModel.count * 10
+        switch collectionView {
+
+        case studyView.collectionView:
+                return itemsModel.count * 10
+
+        case studyView.collectionViewDown:
+                return itemsModelDown.count * 10
+
+        default:
+                return 0
+        }
     }
     
     func collectionView(_ collectionView: UICollectionView, cellForItemAt indexPath: IndexPath) -> UICollectionViewCell {
-        
-        let arrayIndex = arrayIndexForRow(indexPath.row)
-        let modelObject = itemsModel[arrayIndex]
-        let localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
         
         switch collectionView {
                 
         case studyView.collectionView:
                 
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: localIndexPath) as? StudyCollectionViewCell else {
+                let arrayIndex = arrayIndexForRow(indexPath.row)
+                let modelObject = itemsModel[arrayIndex]
+                let localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: indexPath) as? StudyCollectionViewCell else {
                     fatalError("Could not dequeue cell with identifier: StudyCollectionViewCell")
                 }
                 cell.configure(model: modelObject)
@@ -91,19 +133,27 @@ extension StudyController: UICollectionViewDataSource {
                 
         case studyView.collectionViewDown:
                 
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as? StudyCollectionDownViewCell
+                let arrayIndex = arrayIndexForRowDown(indexPath.row)
+                let modelObjectDown = itemsModelDown[arrayIndex]
+                let localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as? StudyCollectionDownViewCell
                 else {
                     fatalError("Could not dequeue cell with identifier: StudyCollectionDownViewCell")
                 }
-                cell.configureCell(model: modelObject)
+                cell.configureCell(model: modelObjectDown)
                 return cell
                 
         default:
-                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as? StudyCollectionDownViewCell
+                let arrayIndex = arrayIndexForRowDown(indexPath.row)
+                let modelObjectDown = itemsModelDown[arrayIndex]
+                let localIndexPath = IndexPath(row: arrayIndex, section: indexPath.section)
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: indexPath) as? StudyCollectionDownViewCell
                 else {
                     fatalError("Could not dequeue cell with identifier: StudyCollectionDownViewCell")
                 }
-                cell.configureCell(model: modelObject)
+                cell.configureCell(model: modelObjectDown)
                 return cell
         }
     }
@@ -118,22 +168,23 @@ extension StudyController: UICollectionViewDelegate {
         switch collectionView {
                 
         case studyView.collectionView:
-                
+                itemsModel[indexPath.row].isSelectedCell = true
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
-                    cell.selected(isSelected: true)
+                    cell.configure(model: itemsModel[indexPath.row])
                     self.animateView(cell.contentView)
                 }
                 
         case studyView.collectionViewDown:
-                
+                itemsModelDown[indexPath.row].isSelectedCell = true
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
-                    cell.selected(isSelected: true)
+                    cell.configureCell(model: itemsModelDown[indexPath.row])
                     self.animateView(cell.contentView)
                 }
                 
         default:
+                itemsModelDown[indexPath.row].isSelectedCell = true
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
-                    cell.selected(isSelected: true)
+                    cell.configureCell(model: itemsModelDown[indexPath.row])
                     self.animateView(cell.contentView)
                 }
         }
@@ -143,22 +194,23 @@ extension StudyController: UICollectionViewDelegate {
         switch collectionView {
                 
         case studyView.collectionView:
-                
+                itemsModel[indexPath.row].isSelectedCell = false
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionViewCell {
-                    cell.selected()
+                    cell.configure(model: itemsModel[indexPath.row])
                     self.animateView(cell.contentView)
                 }
                 
         case studyView.collectionViewDown:
-                
+                itemsModelDown[indexPath.row].isSelectedCell = false
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
-                    cell.selected()
+                    cell.configureCell(model: itemsModelDown[indexPath.row])
                     self.animateView(cell.contentView)
                 }
                 
         default:
+                itemsModelDown[indexPath.row].isSelectedCell = false
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
-                    cell.selected()
+                    cell.configureCell(model: itemsModelDown[indexPath.row])
                     self.animateView(cell.contentView)
                 }
         }
