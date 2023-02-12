@@ -5,7 +5,6 @@ final class StudyController: UIViewController {
     // MARK: - Properties
     
     private let studyView = StudyView()
-    private var viewModels = [CollectionModel]()
     
     // MARK: - Lifecycle
     
@@ -83,18 +82,19 @@ extension StudyController: UICollectionViewDataSource {
         switch collectionView {
                 
         case studyView.collectionView:
-//                let cell = collectionView.dequeueCell(cellType: StudyCollectionViewCell.self, for: indexPath)
+
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: localIndexPath) as! StudyCollectionViewCell
-                cell.configure(with: modelObject)
+                cell.configure(model: modelObject)
                 return cell
                 
         case studyView.collectionViewDown:
+                
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
-                cell.configureCell(with: modelObject)
+                cell.configureCell(model: modelObject)
                 return cell
         default:
                 let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
-                cell.configureCell(with: modelObject)
+                cell.configureCell(model: modelObject)
                 return cell
         }
     }

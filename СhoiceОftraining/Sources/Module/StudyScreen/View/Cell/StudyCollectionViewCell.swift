@@ -1,10 +1,10 @@
 import UIKit
 
 final class StudyCollectionViewCell: UICollectionViewCell {
-
+    
     // MARK: - UI Elements
     
-     var profileDevLabel: UILabel = {
+     private var profileDevLabel: UILabel = {
         
         let label = UILabel()
         label.font = Fonts.SFProDisplay.semibold.font(size: 14)
@@ -26,10 +26,15 @@ final class StudyCollectionViewCell: UICollectionViewCell {
         fatalError("init(coder:) has not been implemented")
     }
     
+    override func prepareForReuse() {
+        super.prepareForReuse()
+        self.profileDevLabel.text = nil
+    }
+    
     // MARK: - Public Methods
     
-    func configure(with viewModel: CollectionModel) {
-        profileDevLabel.text = viewModel.profileDevLabel
+    func configure(model: CollectionModel) {
+        self.profileDevLabel.text = model.profileDevLabel
     }
     
     func selected(isSelected: Bool = false) {

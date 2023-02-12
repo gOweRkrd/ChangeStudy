@@ -28,8 +28,8 @@ final class StudyCollectionDownViewCell: UICollectionViewCell {
     
     // MARK: - Public Methods
     
-    func configureCell(with viewModel: CollectionModel) {
-        profileDevLabel.text = viewModel.profileDevLabel
+    func configureCell(model: CollectionModel) {
+        self.profileDevLabel.text = model.profileDevLabel
     }
     
     func selected(isSelected: Bool = false) {

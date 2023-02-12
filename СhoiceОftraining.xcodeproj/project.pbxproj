@@ -7,7 +7,6 @@
 	objects = {
 
 /* Begin PBXBuildFile section */
-		5013FAFB2996A4CD00BD97B7 /* ReuseIdentifiable.swift in Sources */ = {isa = PBXBuildFile; fileRef = 5013FAFA2996A4CD00BD97B7 /* ReuseIdentifiable.swift */; };
 		508DD4D829927633008F1B44 /* AppDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4D729927633008F1B44 /* AppDelegate.swift */; };
 		508DD4DA29927633008F1B44 /* SceneDelegate.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4D929927633008F1B44 /* SceneDelegate.swift */; };
 		508DD4DC29927633008F1B44 /* MainController.swift in Sources */ = {isa = PBXBuildFile; fileRef = 508DD4DB29927633008F1B44 /* MainController.swift */; };
@@ -31,7 +30,6 @@
 /* End PBXBuildFile section */
 
 /* Begin PBXFileReference section */
-		5013FAFA2996A4CD00BD97B7 /* ReuseIdentifiable.swift */ = {isa = PBXFileReference; fileEncoding = 4; lastKnownFileType = sourcecode.swift; path = ReuseIdentifiable.swift; sourceTree = "<group>"; };
 		508DD4D429927633008F1B44 /* СhoiceОftraining.app */ = {isa = PBXFileReference; explicitFileType = wrapper.application; includeInIndex = 0; path = "СhoiceОftraining.app"; sourceTree = BUILT_PRODUCTS_DIR; };
 		508DD4D729927633008F1B44 /* AppDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = AppDelegate.swift; sourceTree = "<group>"; };
 		508DD4D929927633008F1B44 /* SceneDelegate.swift */ = {isa = PBXFileReference; lastKnownFileType = sourcecode.swift; path = SceneDelegate.swift; sourceTree = "<group>"; };
@@ -174,7 +172,6 @@
 			isa = PBXGroup;
 			children = (
 				50A07EAA2993898D00EEE33A /* UIView+AddSubviews.swift */,
-				5013FAFA2996A4CD00BD97B7 /* ReuseIdentifiable.swift */,
 			);
 			path = Extension;
 			sourceTree = "<group>";
@@ -365,7 +362,6 @@
 				508DD4DA29927633008F1B44 /* SceneDelegate.swift in Sources */,
 				50EE21F82995F15F004E30B4 /* StudyView.swift in Sources */,
 				50A07E9A29936D6200EEE33A /* Assets.swift in Sources */,
-				5013FAFB2996A4CD00BD97B7 /* ReuseIdentifiable.swift in Sources */,
 				50EE21FB2995F734004E30B4 /* StudyCollectionViewCell.swift in Sources */,
 				50EE21F62995F14E004E30B4 /* StudyController.swift in Sources */,
 				50EE2204299608F1004E30B4 /* StudyCollectionDownViewCell.swift in Sources */,

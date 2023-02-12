@@ -52,6 +52,8 @@ final class StudyView: UIView {
         collectionView.backgroundColor = .white
         collectionView.allowsMultipleSelection = true
         collectionView.showsHorizontalScrollIndicator = false
+        layout.sectionInset = UIEdgeInsets(top: 0, left: 0, bottom: 12, right: 0)
+        collectionView.collectionViewLayout = layout
         return collectionView
     }()
     
@@ -92,14 +94,6 @@ final class StudyView: UIView {
     required init?(coder: NSCoder) {
         super.init(coder: coder)
     }
-    
-    // MARK: - Private Methods
-    
-    private func setupSpacingCollectionView() {
-        let layout = UICollectionViewFlowLayout()
-        layout.sectionInset = UIEdgeInsets(top: 12, left: 0, bottom: 12, right: 0)
-        collectionViewDown.collectionViewLayout = layout
-    }
 }
 
 // MARK: - Setup Constrains
@@ -132,7 +126,7 @@ private extension StudyView {
             
             collectionViewDown.topAnchor.constraint(equalTo: infoLabel.bottomAnchor, constant: .TopAnchor),
             collectionViewDown.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
-            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: -.leadingTrailingAnchor),
+            collectionViewDown.trailingAnchor.constraint(equalTo: self.trailingAnchor, constant: .leadingTrailingAnchor),
             collectionViewDown.heightAnchor.constraint(equalTo: self.heightAnchor, multiplier: .collectionViewDownHeight),
             
             questionLabel.leadingAnchor.constraint(equalTo: self.leadingAnchor, constant: .leadingTrailingAnchor),
@@ -155,7 +149,7 @@ private extension CGFloat {
     static let TopAnchor: CGFloat = 12
     static let collectionViewHeight: CGFloat = 0.1
     static let infoLabelTopAnchor: CGFloat = 24
-    static let collectionViewDownHeight: CGFloat = 0.140
+    static let collectionViewDownHeight: CGFloat = 0.170
     static let questionLabelBottomAnchor: CGFloat = 78
     static let applicationButtonLeadingAnchor: CGFloat = 116
     static let applicationButtonBottomAnchor: CGFloat = 58
