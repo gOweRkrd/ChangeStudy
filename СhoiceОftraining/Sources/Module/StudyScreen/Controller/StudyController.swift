@@ -82,18 +82,27 @@ extension StudyController: UICollectionViewDataSource {
         switch collectionView {
                 
         case studyView.collectionView:
-
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: localIndexPath) as! StudyCollectionViewCell
+                
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cell", for: localIndexPath) as? StudyCollectionViewCell else {
+                    fatalError("Could not dequeue cell with identifier: StudyCollectionViewCell")
+                }
                 cell.configure(model: modelObject)
                 return cell
                 
         case studyView.collectionViewDown:
                 
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as? StudyCollectionDownViewCell
+                else {
+                    fatalError("Could not dequeue cell with identifier: StudyCollectionDownViewCell")
+                }
                 cell.configureCell(model: modelObject)
                 return cell
+                
         default:
-                let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as! StudyCollectionDownViewCell
+                guard let cell = collectionView.dequeueReusableCell(withReuseIdentifier: "cellDown", for: localIndexPath) as? StudyCollectionDownViewCell
+                else {
+                    fatalError("Could not dequeue cell with identifier: StudyCollectionDownViewCell")
+                }
                 cell.configureCell(model: modelObject)
                 return cell
         }
@@ -105,7 +114,7 @@ extension StudyController: UICollectionViewDataSource {
 extension StudyController: UICollectionViewDelegate {
     
     func collectionView(_ collectionView: UICollectionView, didSelectItemAt indexPath: IndexPath) {
-  
+        
         switch collectionView {
                 
         case studyView.collectionView:
@@ -121,6 +130,7 @@ extension StudyController: UICollectionViewDelegate {
                     cell.selected(isSelected: true)
                     self.animateView(cell.contentView)
                 }
+                
         default:
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected(isSelected: true)
@@ -145,6 +155,7 @@ extension StudyController: UICollectionViewDelegate {
                     cell.selected()
                     self.animateView(cell.contentView)
                 }
+                
         default:
                 if let cell = collectionView.cellForItem(at: indexPath) as? StudyCollectionDownViewCell {
                     cell.selected()
